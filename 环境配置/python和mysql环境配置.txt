@@ -1,0 +1,38 @@
+python
+
+1.下载python压缩包，使用wget命令或者直接去官网下载
+2.在./configure之前执行export LANG=zh_CN=UTF-8和export LANGUAGE=zh_CN.UTF-8
+3.按照提示执行提示命令
+4.其中碰到缺少zlib库，直接使用yum install zlib*安装库
+注意：./configure --prefix=/usr/bin/python3是指将软件安装在python3目录下面
+5.make 时间较长 会执行测试文件
+6.make install
+7.在/usr/bin目录下创建python3的链接文件
+
+
+
+mysql
+1.yum install mysql-server
+2.修改var/run/mysqld的归属
+
+会出现错误：ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password:yes)
+解决如下：
+1.停止mysql服务
+systemctl stop mysqld.service
+
+2.修改配置文件无密码登录
+vim  /etc/my.cnf
+在最后加上
+skip-grant-tables
+保存
+3.启动mysql
+systemctl  start  mysqld.service
+
+4.登录mysql
+mysql -u root
+注意这里不要加-p
+5.修改密码，mysql5.7用此语法
+use mysql;
+update mysql.user set authentication_string=password('123456') where user='root' ;  
+6.回到第二部把刚加的那句删掉
+保存，重启mysql就可以了
