@@ -8,7 +8,8 @@ python
 5.make 时间较长 会执行测试文件
 6.make install
 7.在/usr/bin目录下创建python3的链接文件
-
+使用pip时会出现pip is configured with locations that require TLS/SSL, however the ssl module in Python is not avail的错误
+解决方案：下载openssl-devel，然后重新编译./configure --enable-optimizations   make make instal
 
 
 mysql
